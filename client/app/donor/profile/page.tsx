@@ -6,10 +6,12 @@ import { User } from "@/utils/types";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Edit } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useRouter } from "next/navigation";
 
 export default function DonorProfilePage() {
   useProtectedRoute(["Donor"]);
   const [profile, setProfile] = useState<User | null>(null);
+  const router = useRouter();
   useEffect(() => {
     getDonorProfile().then(setProfile);
   }, [])
@@ -27,7 +29,7 @@ export default function DonorProfilePage() {
             <div><b>Blood Type:</b> {profile?.bloodType || '-'}</div>
             <div><b>Role:</b> {profile?.role || '-'}</div>
           </div>
-          <Button className="mt-4" variant="outline" size="sm"><Edit className="mr-2 h-4 w-4" />Edit Profile</Button>
+          <Button className="mt-4" variant="outline" size="sm" onClick={() => router.push("/donor/profile/edit-profile")}> <Edit className="mr-2 h-4 w-4" />Edit Profile</Button>
         </CardContent>
       </Card>
     </div>

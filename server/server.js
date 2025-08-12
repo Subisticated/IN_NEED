@@ -49,6 +49,7 @@ app.use('/api/deceased-organs', require('./routes/deceasedOrgans'));
 app.use('/api/blood', require('./routes/blood'));
 app.use('/api/admin', require('./routes/admin'));
 app.use('/api/donor', require('./routes/donor'));
+app.use('/api/user', require('./routes/user'));
 
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
